@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const report = await apiRequest(`/analyze/${sector}`);
             // Store report and redirect to report page
             sessionStorage.setItem('current_report', JSON.stringify(report));
+            
+            // Immediately update stats before redirecting to ensure the search is recorded
+            await updateSessionStats();
+            
             window.location.href = 'report.html';
         } catch (error) {
             showToast(error.message, 'error');
@@ -62,25 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const stats = await apiRequest('/session/stats');
             const statsDiv = document.getElementById('session-stats');
-            statsDiv.innerHTML = `
-                <div class="stat-item"><span>Requests</span><span>${stats.requests_made}</span></div>
-                <div class="stat-item"><span>Sectors</span><span>${stats.sectors_queried.length}</span></div>
-                <div class="stat-item"><span>Cache Size</span><span>${stats.cache_stats.size}</span></div>
-                <div class="stat-item"><span>Rate Limit</span><span>${stats.rate_limit_hits} hits</span></div>
-            `;
+            if (statsDiv) {
+                statsDiv.innerHTML = `
+                    <div class="stat-item"><span>Requests</span><span>${stats.requests_made}</span></div>
+                    <div class="stat-item"><span>Sectors</span><span>${stats.sectors_queried.length}</span></div>
+                    <div class="stat-item"><span>Cache Size</span><span>${stats.cache_stats.size}</span></div>
+                    <div class="stat-item"><span>Rate Hits</span><span>${stats.rate_limit_hits}</span></div>
+                `;
+            }
 
             // Update recent searches
             const recentUl = document.getElementById('recent-searches');
-            recentUl.innerHTML = '';
-            stats.sectors_queried.slice(-5).reverse().forEach(sector => {
-                const li = document.createElement('li');
-                li.textContent = sector;
-                li.addEventListener('click', () => {
-                    searchInput.value = sector;
-                    performSearch();
+            if (recentUl) {
+                recentUl.innerHTML = '';
+                // Only show unique sectors in history
+                const uniqueSectors = [...new Set(stats.sectors_queried)];
+                uniqueSectors.slice(-5).reverse().forEach(sector => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-search"></i> ${sector}`;
+                    li.style.cursor = 'pointer';
+                    li.addEventListener('click', () => {
+                        searchInput.value = sector;
+                        performSearch();
+                    });
+                    recentUl.appendChild(li);
                 });
-                recentUl.appendChild(li);
-            });
+            }
+
+            // Update rate limit counter
+            const rateLimitCounter = document.getElementById('rate-limit-counter');
+            if (rateLimitCounter) {
+                // If the backend doesn't provide remaining directly, we show the limit
+                rateLimitCounter.textContent = stats.rate_limit_remaining || '5';
+            }
         } catch (error) {
             console.error('Failed to update stats:', error);
         }
