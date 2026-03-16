@@ -1,6 +1,27 @@
 # TradeIQ India: Trade Opportunities Intelligence Platform
 
+![Interface Screenshot](screenshot.png)
+
 TradeIQ India is a full-stack web application designed to identify trade opportunities in Indian markets using live web scraping and AI-powered analysis (Google Gemini).
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **HTML5 & CSS3**: Custom modern dark theme using CSS Grid and Flexbox.
+- **Vanilla JavaScript**: No frameworks, pure JS for state management and API interactions.
+- **Marked.js**: For high-performance client-side markdown rendering.
+- **Font Awesome 6**: Professional iconography.
+
+### Backend
+- **FastAPI**: High-performance Python web framework.
+- **Pydantic**: Robust data validation and settings management.
+- **SlowAPI**: Advanced rate limiting for API protection.
+- **python-jose**: Secure JWT authentication handling.
+
+### AI & Data Engine
+- **Google Gemini AI**: Powering the analysis using `gemini-flash-latest`.
+- **BeautifulSoup4 & httpx**: Multi-source async web scraping.
+- **DuckDuckGo Search**: Real-time market data retrieval.
 
 ## 📁 Project Structure
 
