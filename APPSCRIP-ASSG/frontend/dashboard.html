@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TradeIQ India</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="top-navbar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>TradeIQ India</h1>
+            </div>
+            <div class="user-menu">
+                <img src="https://ui-avatars.com/api/?name=Demo+User&background=ffd700&color=0a192f" alt="User Avatar" class="avatar">
+                <button id="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </nav>
+
+        <aside class="left-sidebar">
+            <h2><i class="fas fa-th-large"></i> Quick Sectors</h2>
+            <div class="quick-sectors">
+                <button class="sector-btn"><i class="fas fa-capsules"></i> Pharmaceuticals</button>
+                <button class="sector-btn"><i class="fas fa-laptop-code"></i> Technology</button>
+                <button class="sector-btn"><i class="fas fa-seedling"></i> Agriculture</button>
+                <button class="sector-btn"><i class="fas fa-tshirt"></i> Textiles</button>
+                <button class="sector-btn"><i class="fas fa-car"></i> Automotive</button>
+                <button class="sector-btn"><i class="fas fa-solar-panel"></i> Renewable Energy</button>
+                <button class="sector-btn"><i class="fas fa-shopping-cart"></i> FMCG</button>
+                <button class="sector-btn"><i class="fas fa-industry"></i> Steel & Metals</button>
+            </div>
+            <h2><i class="fas fa-history"></i> Recent Searches</h2>
+            <ul id="recent-searches"></ul>
+            <h2><i class="fas fa-chart-pie"></i> Session Stats</h2>
+            <div id="session-stats"></div>
+        </aside>
+
+        <main class="main-content">
+            <div class="search-area">
+                <input type="text" id="sector-search-input" placeholder="Enter any sector name (e.g. Pharmaceuticals, Renewable Energy)...">
+                <button id="search-button">Generate Report</button>
+            </div>
+            
+            <div id="loader" class="hidden">
+                <div class="spinner"></div>
+                <p>Scraping live market data & generating AI report...</p>
+            </div>
+
+            <div class="featured-sectors">
+                <!-- Can add sector cards here -->
+            </div>
+        </main>
+
+        <aside class="right-panel">
+            <h2><i class="fas fa-terminal"></i> Live Request Log</h2>
+            <ul id="request-log"></ul>
+            <h2><i class="fas fa-tachometer-alt"></i> API Status</h2>
+            <div id="rate-limit-counter">5</div>
+            <p style="text-align: center; color: var(--slate); font-size: 0.8rem;">Requests per minute</p>
+        </aside>
+    </div>
+    <div id="toast-container"></div>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

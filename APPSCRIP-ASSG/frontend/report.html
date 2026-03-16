@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report - TradeIQ India</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/report.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="report-container">
+        <aside class="toc-sidebar">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>TradeIQ</h1>
+            </div>
+            <h2>Table of Contents</h2>
+            <nav id="toc"></nav>
+        </aside>
+        <main class="report-content">
+            <div class="report-header">
+                <h1 id="report-sector"></h1>
+                <div class="report-meta">
+                    <span id="report-timestamp"><i class="far fa-calendar-alt"></i> </span>
+                    <span id="report-sources"><i class="fas fa-database"></i> </span>
+                    <span id="report-words"><i class="fas fa-file-alt"></i> </span>
+                </div>
+                <div class="report-actions">
+                    <button id="download-md"><i class="fab fa-markdown"></i> Download .md</button>
+                    <button id="download-pdf"><i class="fas fa-file-pdf"></i> Download PDF</button>
+                    <button id="share-report"><i class="fas fa-share-alt"></i> Share</button>
+                    <button id="analyze-another"><i class="fas fa-arrow-left"></i> New Analysis</button>
+                </div>
+            </div>
+            <article id="report-body"></article>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html>
