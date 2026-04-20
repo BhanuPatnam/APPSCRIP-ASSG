@@ -1,15 +1,15 @@
 from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordRequestForm
-from backend.app.auth import (
+from app.auth import (
     DEMO_USER, 
     verify_password, 
     create_access_token, 
     get_current_user
 )
-from backend.app.models import Token, User, LoginRequest
-from backend.config import settings
-from backend.app.rate_limiter import limiter
+from app.models import Token, User, LoginRequest
+from config import settings
+from app.rate_limiter import limiter
 
 router = APIRouter()
 

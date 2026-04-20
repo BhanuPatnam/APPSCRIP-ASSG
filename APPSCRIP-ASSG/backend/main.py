@@ -5,10 +5,10 @@ from slowapi.errors import RateLimitExceeded
 from contextlib import asynccontextmanager
 import time
 
-from backend.config import settings
-from backend.app.rate_limiter import limiter, rate_limit_exceeded_handler
-from backend.app.routes import auth, analyze, session
-from backend.app.session_manager import cleanup_sessions
+from config import settings
+from app.rate_limiter import limiter, rate_limit_exceeded_handler
+from app.routes import auth, analyze, session
+from app.session_manager import cleanup_sessions
 import asyncio
 
 # Configure logging

@@ -1,8 +1,8 @@
 import asyncio
 import logging
 import google.generativeai as genai
-from backend.config import settings
-from backend.app.models import ScraperOutput
+from config import settings
+from app.models import ScraperOutput
 from datetime import datetime, timezone
 
 logger = logging.getLogger(__name__)

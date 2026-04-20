@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, Optional
 import logging
-from backend.config import settings
+from config import settings
 
 logger = logging.getLogger(__name__)
 

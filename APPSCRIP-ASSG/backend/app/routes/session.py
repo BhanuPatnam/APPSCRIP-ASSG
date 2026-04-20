@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Request
-from backend.app.auth import get_current_user
-from backend.app.models import User, SessionStats, SessionQuery
-from backend.app.session_manager import get_session
-from backend.app.cache import get_cache_stats
-from backend.app.rate_limiter import limiter
+from app.auth import get_current_user
+from app.models import User, SessionStats, SessionQuery
+from app.session_manager import get_session
+from app.cache import get_cache_stats
+from app.rate_limiter import limiter
 
 router = APIRouter()
 

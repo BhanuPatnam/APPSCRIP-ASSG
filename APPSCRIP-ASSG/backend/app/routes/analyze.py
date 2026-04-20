@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
-from backend.app.auth import get_current_user
-from backend.app.models import User, AnalysisReport, ScraperOutput
-from backend.app.scraper import scrape_all
-from backend.app.ai_analyzer import generate_report
-from backend.app.cache import get_cached_report, set_cached_report
-from backend.app.session_manager import update_session_request
-from backend.app.rate_limiter import limiter
+from app.auth import get_current_user
+from app.models import User, AnalysisReport, ScraperOutput
+from app.scraper import scrape_all
+from app.ai_analyzer import generate_report
+from app.cache import get_cached_report, set_cached_report
+from app.session_manager import update_session_request
+from app.rate_limiter import limiter
 from datetime import datetime, timezone
 import time
 import logging
